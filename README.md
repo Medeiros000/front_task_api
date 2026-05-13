@@ -1,5 +1,9 @@
 # Task Manager - Frontend
 
+[Frontend app url](https://front-task-api.vercel.app/) - [https://front-task-api.vercel.app/](https://front-task-api.vercel.app/)
+
+[Backend Project URL](https://github.com/Medeiros000/task_api) - [https://github.com/Medeiros000/task_api](https://github.com/Medeiros000/task_api)
+
 Aplicação web moderna para gerenciamento de tarefas. Uma interface intuitiva e responsiva construída com React, permitindo aos usuários criar, visualizar, atualizar e gerenciar suas tarefas de forma eficiente.
 
 ## 🎯 Features
