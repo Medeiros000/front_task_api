@@ -1,8 +1,8 @@
 import { useOutletContext } from "react-router-dom";
 
 function TaskInfo() {
-	const context = useOutletContext();
-	const task = context?.task || context;
+	const { task, refetch } = useOutletContext();
+	// const task = context?.task || context;
 
 	if (!task) {
 		return (
@@ -17,7 +17,7 @@ function TaskInfo() {
 			<h1>{task.title}</h1>
 			<h3>{task.description}</h3>
 			<div>
-				<span className={`task-status ${task.status ? 'completed' : 'pending'}`} style={{borderRadius: "5px"}}>
+				<span className={`task-status ${task.status ? "completed" : "pending"}`} style={{ borderRadius: "5px" }}>
 					{task.status ? "✅ Completed" : "⏳ Pending"}
 				</span>
 				<span className="task-author">

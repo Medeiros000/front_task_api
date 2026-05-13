@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import Tasks from "./pages/tasks/Tasks";
 import TaskList from "./pages/tasks/TaskList";
-import TaskDetail from "./pages/tasks/TaskDetails";
+import TaskDetails from "./pages/tasks/TaskDetails";
 import TaskInfo from "./pages/tasks/TaskInfo";
 import TaskForm from "./pages/tasks/TaskForm";
 import NavBar from "./components/NavBar";
@@ -15,7 +15,7 @@ function App() {
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
 
 	useEffect(() => {
-		if (token && isTokenExpired(token)) {
+		if ((token && token !== "") && isTokenExpired(token)) {
 			localStorage.removeItem("token");
 			setToken("");
 		}
@@ -36,7 +36,7 @@ function App() {
 					<Route path="" element={<TaskList />}></Route>
 					<Route path="new" element={<TaskForm />}></Route>
 					<Route path="edit" element={<TaskForm />}></Route>
-					<Route path=":id/" element={<TaskDetail />}>
+					<Route path=":id/" element={<TaskDetails />}>
 						<Route index element={<Navigate to="info" />} />
 						<Route path="info" element={<TaskInfo />}></Route>
 						<Route path="update" element={<TaskForm />}></Route>

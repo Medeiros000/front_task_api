@@ -886,3 +886,9 @@ button:disabled {
 		text-decoration: underline;
 	}
 }
+
+.error {
+	color: red;
+  font-size: larger;
+	/* margin-top: 16px; */
+}
