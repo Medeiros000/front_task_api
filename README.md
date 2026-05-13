@@ -72,11 +72,25 @@ cd react_front_api
 npm install
 ```
 
-3. Configure as variáveis de ambiente (se necessário):
+3. Configure as variáveis de ambiente:
+
+Copie o arquivo `.env.example` para `.env.local`:
 ```bash
-# Crie um arquivo .env na raiz do projeto
-VITE_API_URL=http://localhost:3000/api
+cp .env.example .env.local
 ```
+
+Edite o arquivo `.env.local` e configure a URL da sua API:
+```env
+# Para desenvolvimento local
+VITE_API_URL=http://localhost:3000/api
+
+# Para produção no Vercel/outro host
+VITE_API_URL=https://seu-backend-api.com/api
+```
+
+**Nota:** O arquivo `.env.local` é ignorado pelo git e não será commitado. Use `.env.example` como referência.
+
+**ℹ️ Para mais detalhes sobre configuração da API, veja:** [API_SETUP.md](API_SETUP.md)
 
 ### Executar em Desenvolvimento
 
@@ -237,6 +251,60 @@ App.jsx (Estado de autenticação)
 - Axios com interceptadores para autenticação
 - State management com hooks (useState, useEffect)
 - Context API para compartilhar dados entre rotas
+
+## 🐛 Troubleshooting (Problemas Comuns)
+
+### ❌ Erro: "Cannot find module 'src/middlewares/auth'"
+Este erro é do **backend**, não do frontend. Certifique-se de que o backend está rodando corretamente.
+
+### ❌ Erro: "Request failed with status code 404" no Sign In
+**Causa:** A URL da API está incorreta ou o backend não responde.
+
+**Solução:**
+1. Verifique se o arquivo `.env.local` existe e contém a URL correta:
+```bash
+VITE_API_URL=http://localhost:3000/api
+```
+
+2. Certifique-se que o backend está rodando:
+```bash
+# No diretório do backend
+npm run dev
+```
+
+3. Teste a URL manualmente:
+```bash
+curl http://localhost:3000/api/sign-in
+```
+
+### ❌ Erro: "No token provided. Cannot fetch tasks"
+**Causa:** Você não está autenticado.
+
+**Solução:**
+1. Faça login usando credenciais válidas
+2. O token será automaticamente armazenado em `localStorage`
+
+### ❌ Tarefas não carregam
+**Causa:** Backend não está disponível ou token expirou.
+
+**Solução:**
+1. Verifique se o backend está rodando
+2. Faça login novamente
+3. Verifique o console do navegador para mensagens de erro detalhadas
+
+### ❌ Erro CORS
+**Causa:** O backend não está configurado para aceitar requisições do frontend.
+
+**Solução:**
+Configure CORS no backend:
+```javascript
+// No backend (Express)
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
+```
 
 ## 🤝 Contribuindo
 
