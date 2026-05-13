@@ -26,7 +26,7 @@ function TaskDetails() {
   }, [msg]);
 
 	function handleDeleteTask() {
-		taskService.delete(task.id).then(() => {
+		taskService.delete(taskId).then(() => {
 		  setTask(null);
       if (refetch) refetch();
       navigate(`/tasks`);
