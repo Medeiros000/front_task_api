@@ -8,7 +8,7 @@ nav {
 	background: var(--bg);
 	position: sticky;
 	top: 0;
-	z-index: 100;
+	z-index: 1000;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -757,12 +757,13 @@ button:disabled {
 	display: flex;
 	flex-direction: row;
 	justify-content: right;
+  justify-self: center;
 	/* gap: 12px; */
 	/* padding: 16px; */
 	background: var(--form-background);
 	/* border: 1px solid var(--border); */
 	/* border-radius: 8px; */
-	width: 100%;
+	width: 95%;
 
 	.nav-links {
 		margin: 0;

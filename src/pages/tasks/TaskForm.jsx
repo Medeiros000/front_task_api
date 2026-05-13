@@ -28,9 +28,8 @@ function TaskForm() {
 
 	function handleUpdateTask(event) {
 		event.preventDefault();
-		console.log("authorId", task.authorId);
+		
 		if (!task.authorId) {
-			console.log("create task", task);
 			taskService
 				.create(task)
 				.then((result) => {
@@ -44,16 +43,18 @@ function TaskForm() {
 		}
 
 		const updatedTask = { title: task.title, description: task.description, status: task.status };
-		taskService.update(task.id, updatedTask).then((result) => {
-			setTask({ ...task, result });
-			if (refetch) refetch();
-			navigate(`/tasks`);
-		}).catch((error) => {
-      console.error("Error updating task:", error.status);
-      if (error.status === 403) {      
-        setMsg("You can only update your own tasks");
-      }			
-		});
+		taskService
+			.update(task.id, updatedTask)
+			.then((result) => {
+				setTask({ ...task, result });
+				if (refetch) refetch();
+				navigate(`/tasks`);
+			})
+			.catch((error) => {
+				if (error.status === 403) {
+					setMsg("You can only update your own tasks");
+				}
+			});
 	}
 
 	function handleChangeCheckbox(event) {

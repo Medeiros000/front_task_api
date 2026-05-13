@@ -31,6 +31,9 @@ function TaskDetails() {
       if (refetch) refetch();
       navigate(`/tasks`);
 		}).catch((error) => {
+      if (error.status === 403) {
+        setMsg("You can only delete your own tasks");
+      }
       setMsg("You can only delete your own tasks");
     });
 	}

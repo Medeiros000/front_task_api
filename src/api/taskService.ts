@@ -2,7 +2,8 @@ import api from "./axios";
 import { Task } from "../types/class";
 
 export const taskService = {
-	// O filtro de título entra aqui como um objeto de params
+	// The title parameter is optional, 
+  // so we can pass it or not when calling getAll
 	async getAll(title?: string) {
 		const response = await api.get<Task[]>("/tasks", {
 			params: { title },
