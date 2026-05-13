@@ -366,6 +366,7 @@ button:disabled {
 	border: 2px solid var(--border);
 	border-radius: 10px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .task-details-inner > div:first-child {
@@ -411,6 +412,22 @@ button:disabled {
 	color: var(--text);
 	font-size: 15px;
 }
+
+.task-details-inner p.error {
+  color: var(--accent);
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-self: center;
+  background-color: #fff;
+  border: 2px solid var(--accent);
+  padding: 5px;
+  border-radius: 4px;
+}
+
 
 /* ===== TASK INFO ===== */
 .task-info {
@@ -885,10 +902,4 @@ button:disabled {
 		color: var(--accent);
 		text-decoration: underline;
 	}
-}
-
-.error {
-	color: red;
-  font-size: larger;
-	/* margin-top: 16px; */
 }

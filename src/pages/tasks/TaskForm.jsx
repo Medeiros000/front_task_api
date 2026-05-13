@@ -8,6 +8,7 @@ function TaskForm() {
 	const navigate = useNavigate();
 	const context = useOutletContext() || {};
 	const refetch = context?.refetch;
+	const [msg, setMsg] = useState("");
 
 	useEffect(() => {
 		if (!taskId) return;
@@ -16,22 +17,42 @@ function TaskForm() {
 		});
 	}, []);
 
+	useEffect(() => {
+		if (msg) {
+			const timer = setTimeout(() => {
+				setMsg("");
+			}, 3000);
+			return () => clearTimeout(timer);
+		}
+	}, [msg]);
+
 	function handleUpdateTask(event) {
 		event.preventDefault();
 		console.log("authorId", task.authorId);
 		if (!task.authorId) {
 			console.log("create task", task);
-			taskService.create(task).then((result) => {
-				if (refetch) refetch();
-				navigate(`/tasks`);
-			});
+			taskService
+				.create(task)
+				.then((result) => {
+					if (refetch) refetch();
+					navigate(`/tasks`);
+				})
+				.catch((error) => {
+					setMsg("Error creating task. Please try again.");
+				});
 			return;
 		}
+
 		const updatedTask = { title: task.title, description: task.description, status: task.status };
 		taskService.update(task.id, updatedTask).then((result) => {
 			setTask({ ...task, result });
 			if (refetch) refetch();
 			navigate(`/tasks`);
+		}).catch((error) => {
+      console.error("Error updating task:", error.status);
+      if (error.status === 403) {      
+        setMsg("You can only update your own tasks");
+      }			
 		});
 	}
 
@@ -77,13 +98,14 @@ function TaskForm() {
 				</div>
 				<div>
 					<label htmlFor="status">Status</label>
-					<div className="form-task-edit-div" style={{padding: 0}}>
+					<div className="form-task-edit-div" style={{ padding: 0 }}>
 						<input type="checkbox" id="status" name="status" checked={task.status} onChange={handleChangeCheckbox} />
 						completed?
 					</div>
 				</div>
-				<button type="submit">{task.authorId  ? "Update Task" : "Create Task"}</button>
+				<button type="submit">{task.authorId ? "Update Task" : "Create Task"}</button>
 			</form>
+			{msg && <p className="error">{msg}</p>}
 		</div>
 	);
 }

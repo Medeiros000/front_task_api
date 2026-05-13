@@ -26,14 +26,12 @@ function TaskDetails() {
   }, [msg]);
 
 	function handleDeleteTask() {
-		console.log("delete task", task);
 		taskService.delete(task.id).then(() => {
 		  setTask(null);
       if (refetch) refetch();
       navigate(`/tasks`);
 		}).catch((error) => {
       setMsg("You can only delete your own tasks");
-      console.error("Error deleting task:", error.status);
     });
 	}
 
@@ -58,7 +56,7 @@ function TaskDetails() {
 					</Link>
 				</div>
 				<Outlet context={{ task, refetch }} />
-        {msg && <p className="error" style={{color: "#ff0000", fontSize: "larger"}}>{msg}</p>}
+        {msg && <p className="error">{msg}</p>}
 			</div>
 		</div>
 	);
