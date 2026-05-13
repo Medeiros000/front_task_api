@@ -1,4 +1,4 @@
-import { useParams, Outlet, useOutletContext } from "react-router-dom";
+import { useNavigate, useParams, Outlet, useOutletContext } from "react-router-dom";
 import { taskService } from "../../api/taskService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ function TaskDetail() {
 	const [task, setTask] = useState(null);
 	const taskId = useParams().id;
 	const { refetch } = useOutletContext() || {};
+  const navigate = useNavigate();
 
 	useEffect(() => {
 		taskService.getById(taskId).then((task) => {
@@ -20,7 +21,7 @@ function TaskDetail() {
 		taskService.delete(task.id).then(() => {
 		  setTask(null);
 		});
-		useNavigate()(`/tasks`);
+		navigate(`/tasks`);
 	}
 
 	if (!task) {
@@ -38,7 +39,9 @@ function TaskDetail() {
 				<div>
 					<Link to={"info"}>Info</Link>
 					<Link to={"update"}>Update</Link>
-					<Link to={"/tasks"} onClick={handleDeleteTask}>Delete</Link>
+					<Link to={"/tasks"} onClick={handleDeleteTask}>
+						Delete
+					</Link>
 				</div>
 				<Outlet context={{ task, refetch }} />
 			</div>
