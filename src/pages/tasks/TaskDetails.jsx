@@ -56,21 +56,25 @@ function TaskDetails() {
 	// }
 
 	return (
-  <>
-    {spinner && <Spinner />}
-		<div className="task-details-container">
-			<h2>Task Details</h2>
-			<div className="task-details-inner center-item">
-				<div>
-					<Link to={"info"}>Info</Link>
-					<Link to={"update"}>Update</Link>
-					<Link onClick={handleDeleteTask}>Delete</Link>
-				</div>
-				<Outlet context={{ task, refetch }} />
-				{msg && <p className="error">{msg}</p>}
+		<>
+			{spinner && <Spinner />}
+			<div className="task-details-container">
+				{!spinner && (
+					<>
+						<h2>Task Details</h2>
+						<div className="task-details-inner center-item">
+							<div>
+								<Link to={"info"}>Info</Link>
+								<Link to={"update"}>Update</Link>
+								<Link onClick={handleDeleteTask}>Delete</Link>
+							</div>
+							<Outlet context={{ task, refetch }} />
+							{msg && <p className="error">{msg}</p>}
+						</div>
+					</>
+				)}
 			</div>
-		</div>
-  </>
+		</>
 	);
 }
 
