@@ -15,10 +15,10 @@ function App() {
 	const [token, setToken] = useState(localStorage.getItem("token") || "");
 
 	useEffect(() => {
-		if ((token && token !== "") && isTokenExpired(token)) {
-			localStorage.removeItem("token");
-			setToken("");
-		}
+    if(isTokenExpired(token)) {
+      signOut();      
+    }
+    
 	}, [token]);
 
 	function signOut() {
@@ -32,7 +32,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/sign-in" element={<SignIn setToken={setToken} signOut={signOut} />} />
-				<Route path="/tasks/" element={<Tasks token={token} />}>
+				<Route path="/tasks/" element={<Tasks token={token} isTokenExpired={isTokenExpired} signOut={signOut} />}>
 					<Route path="" element={<TaskList />}></Route>
 					<Route path="new" element={<TaskForm />}></Route>
 					<Route path="edit" element={<TaskForm />}></Route>

@@ -9,9 +9,9 @@ function TaskDetails() {
 	const taskId = useParams().id;
 	const { refetch } = useOutletContext() || {};
 	const navigate = useNavigate();
-	const [carregador, setCarregador] = useState(true);
+	const [spinner, setSpinner] = useState(true);
 
-	function Carregador() {
+	function Spinner() {
 		return (
 			<svg className="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
 				<circle className="path" fill="none" strokeWidth="6" strokeLinecap="round" cx="33" cy="33" r="30"></circle>
@@ -22,7 +22,7 @@ function TaskDetails() {
 	useEffect(() => {
 		taskService.getById(taskId).then((task) => {
 			setTask(task);
-      setCarregador(false);
+			setSpinner(false);
 		});
 	}, [taskId]);
 
@@ -51,12 +51,14 @@ function TaskDetails() {
 			});
 	}
 
-	if (!task) {
-	  return <Carregador />;
-	}
+	// if (!task) {
+	// 	return <Spinner />;
+	// }
 
 	return (
-		<div className="task-details-container">				
+  <>
+    {spinner && <Spinner />}
+		<div className="task-details-container">
 			<h2>Task Details</h2>
 			<div className="task-details-inner center-item">
 				<div>
@@ -68,6 +70,7 @@ function TaskDetails() {
 				{msg && <p className="error">{msg}</p>}
 			</div>
 		</div>
+  </>
 	);
 }
 
