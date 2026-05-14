@@ -1,3 +1,44 @@
+html {
+	font-size: 62.5%;
+
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	p,
+	label,
+	input,
+	button {
+		font-size: 1rem;
+	}
+
+	span {
+		font-size: 0.8rem;
+	}
+
+	@media (max-width: 640px) {
+		font-size: 50%;
+		h1 {
+			font-size: 1.5rem;
+		}
+		h2 {
+			font-size: 1.1rem;
+		}
+		p,
+		label,
+		input,
+		button {
+			font-size: 0.7rem;
+		}
+		span {
+			font-size: 0.7rem;
+		}
+	}
+}
+
 /* ===== NAVIGATION ===== */
 nav {
 	display: flex;
@@ -14,7 +55,6 @@ nav {
 
 nav h1 {
 	margin: 0;
-	font-size: 28px;
 	color: var(--accent);
 	letter-spacing: -0.5px;
 }
@@ -64,7 +104,6 @@ button {
 	padding: 10px 20px;
 	border: none;
 	border-radius: 6px;
-	font-size: 14px;
 	font-weight: 600;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -101,7 +140,6 @@ button:disabled {
 .tasks-page h1 {
 	margin-top: 0;
 	margin-bottom: 10px;
-	font-size: 32px;
 	color: var(--text-h);
 }
 
@@ -148,13 +186,11 @@ button:disabled {
 .task-card h3 {
 	margin: 0 0 10px 0;
 	color: var(--text-h);
-	font-size: 18px;
 	font-weight: 600;
 }
 
 .task-description {
 	color: var(--text);
-	font-size: 14px;
 	margin: 8px 0;
 	line-height: 1.5;
 	overflow: hidden;
@@ -167,7 +203,6 @@ button:disabled {
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 12px;
-	font-size: 12px;
 	color: var(--text);
 }
 
@@ -175,7 +210,6 @@ button:disabled {
 	padding: 4px 12px;
 	border-radius: 20px;
 	font-weight: 600;
-	font-size: 11px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
@@ -219,7 +253,6 @@ button:disabled {
 
 .form-wrapper h2 {
 	text-align: center;
-	font-size: 24px;
 	font-weight: 600;
 	color: var(--text-h);
 	margin: 0 0 30px 0;
@@ -273,7 +306,6 @@ button:disabled {
 .form-task-edit label {
 	font-weight: 600;
 	color: var(--text-h);
-	font-size: 14px;
 	text-align: left;
 }
 
@@ -290,7 +322,6 @@ button:disabled {
 	border: 2px solid var(--border);
 	border-radius: 6px;
 	font-family: var(--sans);
-	font-size: 14px;
 	color: var(--text-h);
 	background: var(--bg);
 	transition: all 0.3s ease;
@@ -325,7 +356,6 @@ button:disabled {
 
 .form-task-edit button {
 	padding: 12px 24px;
-	font-size: 16px;
 	margin-top: 10px;
 	max-width: 180px;
 	align-self: center;
@@ -345,7 +375,6 @@ button:disabled {
 
 .task-details-container h2 {
 	text-align: center;
-	font-size: 24px;
 	font-weight: 600;
 	color: var(--text-h);
 	margin: 0 0 20px 0;
@@ -366,7 +395,7 @@ button:disabled {
 	border: 2px solid var(--border);
 	border-radius: 10px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: relative;
+	position: relative;
 }
 
 .task-details-inner > div:first-child {
@@ -383,7 +412,6 @@ button:disabled {
 	padding: 5px 16px;
 	margin: 5px 0;
 	border-radius: 6px;
-	font-size: 14px;
 	font-weight: 600;
 	text-decoration: none;
 	color: white;
@@ -391,6 +419,10 @@ button:disabled {
 	border: none;
 	cursor: pointer;
 	transition: all 0.3s ease;
+
+	@media screen and (max-width: 640px) {
+		padding: 2px 5px;
+	}
 }
 
 .task-details-inner a:hover,
@@ -402,7 +434,6 @@ button:disabled {
 
 .task-details-inner h1 {
 	margin: 0 0 16px 0;
-	font-size: 28px;
 	color: var(--accent);
 }
 
@@ -410,24 +441,21 @@ button:disabled {
 	margin: 12px 0;
 	line-height: 1.6;
 	color: var(--text);
-	font-size: 15px;
 }
 
 .task-details-inner p.error {
-  color: var(--accent);
-  font-size: 16px;
-  font-weight: 600;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  align-self: center;
-  background-color: #fff;
-  border: 2px solid var(--accent);
-  padding: 5px;
-  border-radius: 4px;
+	color: var(--accent);
+	font-weight: 600;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	align-self: center;
+	background-color: #fff;
+	border: 2px solid var(--accent);
+	padding: 5px;
+	border-radius: 4px;
 }
-
 
 /* ===== TASK INFO ===== */
 .task-info {
@@ -445,7 +473,6 @@ button:disabled {
 	flex-direction: row;
 	justify-content: space-around;
 	margin: 12px 0;
-	font-size: 15px;
 }
 
 /* ===== CENTER SECTION ===== */
@@ -485,7 +512,6 @@ button:disabled {
 
 		input[type="text"]::placeholder,
 		textarea::placeholder {
-			font-size: 13px;
 			color: #6d6d6d;
 			padding: 0px;
 			text-align: start;
@@ -544,7 +570,6 @@ button:disabled {
 
 	a {
 		color: var(--text-h);
-		font-size: 16px;
 		border-radius: 6px;
 		background: var(--social-bg);
 		display: flex;
@@ -619,10 +644,16 @@ button:disabled {
 	padding: 0 20px;
 	background: var(--navbar-bg);
 	border-bottom: 1px solid var(--border);
+	background-color: #16171d;
 
 	.logo {
 		height: 24px;
 		width: auto;
+	}
+
+	h1 {
+		margin: 0;
+		color: var(--accent);
 	}
 
 	.nav-links {
@@ -634,7 +665,6 @@ button:disabled {
 			width: 100px;
 			color: var(--text);
 			text-decoration: none;
-			font-size: 14px;
 			transition: color 0.2s;
 			list-style: none;
 
@@ -648,6 +678,10 @@ button:disabled {
 				}
 			}
 		}
+	}
+
+	@media (max-width: 480px) {
+		flex-direction: column;
 	}
 }
 
@@ -695,13 +729,11 @@ button:disabled {
 
 	h2 {
 		margin: 0;
-		font-size: 24px;
 		color: var(--text-h);
 		text-align: center;
 	}
 
 	label {
-		font-size: 14px;
 		color: var(--text);
 	}
 
@@ -711,7 +743,6 @@ button:disabled {
 		border: 1px solid var(--border);
 		background: var(--input-bg);
 		color: var(--text);
-		font-size: 14px;
 
 		&::placeholder {
 			color: var(--text-placeholder);
@@ -724,7 +755,6 @@ button:disabled {
 		border: none;
 		background: var(--accent);
 		color: #fff;
-		font-size: 16px;
 		cursor: pointer;
 		font-weight: 600;
 
@@ -748,7 +778,6 @@ button:disabled {
 
 	h1 {
 		margin: 0;
-		font-size: 32px;
 		color: var(--text-h);
 	}
 }
@@ -757,7 +786,7 @@ button:disabled {
 	display: flex;
 	flex-direction: row;
 	justify-content: right;
-  justify-self: center;
+	justify-self: center;
 	/* gap: 12px; */
 	/* padding: 16px; */
 	background: var(--form-background);
@@ -779,6 +808,7 @@ button:disabled {
 		margin: 0;
 		color: var(--text-h);
 		text-align: center;
+		width: max-content;
 	}
 
 	a:hover {
@@ -799,7 +829,6 @@ button:disabled {
 	gap: 6px;
 
 	label {
-		font-size: 14px;
 		text-align: left;
 		color: var(--text);
 		width: 100%;
@@ -811,7 +840,6 @@ button:disabled {
 		border: 1px solid var(--border);
 		background: var(--input-bg);
 		color: var(--text);
-		font-size: 14px;
 
 		&::placeholder {
 			color: var(--text-placeholder);
@@ -842,7 +870,6 @@ button:disabled {
 		margin: 0;
 		color: var(--text);
 		flex-grow: 1;
-		font-size: 14px;
 		line-height: 1.5;
 	}
 
@@ -851,7 +878,6 @@ button:disabled {
 		justify-content: space-between;
 		gap: 12px;
 		flex-wrap: wrap;
-		font-size: 12px;
 		padding: 5px 5px;
 	}
 
@@ -875,7 +901,6 @@ button:disabled {
 
 	.task-author {
 		color: var(--text);
-		font-size: 14px;
 		text-align: center;
 		align-self: center;
 	}
@@ -902,5 +927,60 @@ button:disabled {
 	a:hover {
 		color: var(--accent);
 		text-decoration: underline;
+	}
+}
+
+/* === Spinner === */
+.spinner {
+	animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(270deg);
+	}
+}
+
+.path {
+	stroke-dasharray: 187;
+	stroke-dashoffset: 0;
+	transform-origin: center;
+	animation:
+		dash 1.4s ease-in-out infinite,
+		colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+	0% {
+		stroke: #4285f4;
+	}
+	25% {
+		stroke: #de3e35;
+	}
+	50% {
+		stroke: #f7c223;
+	}
+	75% {
+		stroke: #1b9a59;
+	}
+	100% {
+		stroke: #4285f4;
+	}
+}
+
+@keyframes dash {
+	0% {
+		stroke-dashoffset: 187;
+	}
+	50% {
+		stroke-dashoffset: 46.75;
+		transform: rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: 187;
+		transform: rotate(450deg);
 	}
 }
